@@ -16,9 +16,9 @@ public class ClientService {
     public List<Client> getAll() { return clientRepository.findAll(); }
 
     public Client persist(Client client){
-        Client savedClient = clientRepository.save(client);
-        return savedClient;
+        return clientRepository.save(client);
     }
+
     public Client getById(int id){
         Optional<Client> clientOptional = clientRepository.findById(id);
         if (clientOptional.isPresent()) {
@@ -26,7 +26,18 @@ public class ClientService {
         }
         return null;
     }
+
+    public Client update(Integer id, Client client) {
+        Optional<Client> clientOptional = clientRepository.findById(id);
+
+        if(clientOptional.isPresent()){
+            Client existingClient = clientOptional.get();
+            existingClient.setName(client.getName());
+            existingClient.setSurname(client.getSurname());
+        }
+
+        return clientRepository.save(client);
+    }
+
     public void deleteById(int id) { clientRepository.deleteById(id); }
-
-
 }
