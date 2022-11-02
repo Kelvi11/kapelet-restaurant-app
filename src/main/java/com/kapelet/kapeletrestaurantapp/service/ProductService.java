@@ -31,9 +31,17 @@ public class ProductService {
         return null;
     }
 
-    public void deleteById(int id){
-        productRepository.deleteById(id);
+    public Product update(Integer id, Product product) {
+        Optional<Product> productOptional = productRepository.findById(id);
+        if (productOptional.isPresent()){
+            Product existingProduct = productOptional.get();
+            existingProduct.setName(product.getName());
+            existingProduct.setPrice(product.getPrice());
+        }
+
+        return productRepository.save(product);
     }
 
+    public void deleteById(int id){productRepository.deleteById(id);}
 
 }
