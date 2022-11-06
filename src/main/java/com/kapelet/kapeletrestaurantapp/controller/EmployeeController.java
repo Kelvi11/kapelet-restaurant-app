@@ -1,7 +1,6 @@
 package com.kapelet.kapeletrestaurantapp.controller;
 
 import com.kapelet.kapeletrestaurantapp.model.Employee;
-import com.kapelet.kapeletrestaurantapp.repository.EmployeeRepository;
 import com.kapelet.kapeletrestaurantapp.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -27,7 +26,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/{id}")
-    public Employee getbyId(@PathVariable int id) {
+    public Employee getById(@PathVariable int id) {
         return employeeService.getById(id);
     }
 
@@ -37,7 +36,7 @@ public class EmployeeController {
     }
 
     @DeleteMapping("/{id}")
-    public String delete(@PathVariable ("id") int id){
+    public String delete(@PathVariable("id") int id) {
         employeeService.deleteById(id);
         return "Delete successfully!";
     }
