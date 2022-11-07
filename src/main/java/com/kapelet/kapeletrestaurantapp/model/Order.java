@@ -11,7 +11,7 @@ public class Order {
     private int id;
     private String listProducts;
     private Double total;
-    OrderStatus status;
+    private OrderStatus status;
 
     public int getId() { return id; }
 

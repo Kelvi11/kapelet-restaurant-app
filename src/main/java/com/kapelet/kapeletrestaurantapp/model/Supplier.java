@@ -8,10 +8,10 @@ import javax.persistence.Table;
 @Table(name = "suppliers")
 public class Supplier {
     @Id
-    int id;
-    String name;
-    String contactPerson;
-    long contactNumber;
+    private int id;
+    private String name;
+    private String contactPerson;
+    private long contactNumber;
 
 
     public int getId() {
@@ -45,6 +45,5 @@ public class Supplier {
     public void setContactNumber(long contactNumber) {
         this.contactNumber = contactNumber;
     }
-
 
 }
