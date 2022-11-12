@@ -3,6 +3,7 @@ package com.kapelet.kapeletrestaurantapp.controller;
 import com.kapelet.kapeletrestaurantapp.model.Order;
 import com.kapelet.kapeletrestaurantapp.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,8 +16,8 @@ public class OrderController {
     OrderService orderService;
 
     @GetMapping
-    public List<Order> getAll() {
-        return orderService.getAll();
+    public ResponseEntity getAll() {
+        return ResponseEntity.ok(orderService.getAll());
     }
 
     @PostMapping

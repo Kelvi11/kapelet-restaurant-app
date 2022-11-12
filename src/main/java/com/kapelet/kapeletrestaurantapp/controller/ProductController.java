@@ -3,6 +3,7 @@ package com.kapelet.kapeletrestaurantapp.controller;
 import com.kapelet.kapeletrestaurantapp.model.Product;
 import com.kapelet.kapeletrestaurantapp.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,27 +16,27 @@ public class ProductController {
     ProductService productService;
 
     @GetMapping
-    public List<Product> getAll(){
-        return productService.getAll();
+    public ResponseEntity getAll() {
+        return ResponseEntity.ok(productService.getAll());
     }
 
     @PostMapping
-    public Product persist(@RequestBody Product product){
+    public Product persist(@RequestBody Product product) {
         return productService.persist(product);
     }
 
     @GetMapping("/{id}")
-    public Product getById(@PathVariable Integer id){
+    public Product getById(@PathVariable Integer id) {
         return productService.getById(id);
     }
 
     @PutMapping("/{id}")
-    public  Product update(@PathVariable Integer id, @RequestBody Product product){
-        return productService.update(id,product);
+    public Product update(@PathVariable Integer id, @RequestBody Product product) {
+        return productService.update(id, product);
     }
 
     @DeleteMapping("/{id}")
-    public String deleteById(@PathVariable("id") Integer id){
+    public String deleteById(@PathVariable("id") Integer id) {
         productService.deleteById(id);
         return "U fshi me suksess!";
     }

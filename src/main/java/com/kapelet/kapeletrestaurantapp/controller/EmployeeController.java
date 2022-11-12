@@ -3,6 +3,7 @@ package com.kapelet.kapeletrestaurantapp.controller;
 import com.kapelet.kapeletrestaurantapp.model.Employee;
 import com.kapelet.kapeletrestaurantapp.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,8 +17,8 @@ public class EmployeeController {
     EmployeeService employeeService;
 
     @GetMapping
-    public List<Employee> getAll() {
-        return employeeService.getAll();
+    public ResponseEntity getAll() {
+        return ResponseEntity.ok(employeeService.getAll());
     }
 
     @PostMapping
