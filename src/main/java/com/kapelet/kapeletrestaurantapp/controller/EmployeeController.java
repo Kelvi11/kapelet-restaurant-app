@@ -22,23 +22,23 @@ public class EmployeeController {
     }
 
     @PostMapping
-    public Employee persist(@RequestBody Employee employee) {
-        return employeeService.persist(employee);
+    public ResponseEntity<Employee> persist(@RequestBody Employee employee) {
+        return ResponseEntity.ok(employeeService.persist(employee));
     }
 
     @GetMapping("/{id}")
-    public Employee getById(@PathVariable int id) {
-        return employeeService.getById(id);
+    public ResponseEntity<Employee> getById(@PathVariable int id) {
+        return ResponseEntity.ok(employeeService.getById(id));
     }
 
     @PutMapping("/{id}")
-    public Employee update(@PathVariable int id, @RequestBody Employee employee) {
-        return employeeService.update(id, employee);
+    public ResponseEntity<Employee> update(@PathVariable int id, @RequestBody Employee employee) {
+        return ResponseEntity.ok(employeeService.update(id, employee));
     }
 
     @DeleteMapping("/{id}")
-    public String delete(@PathVariable("id") int id) {
+    public ResponseEntity<String> delete(@PathVariable("id") int id) {
         employeeService.deleteById(id);
-        return "Delete successfully!";
+        return ResponseEntity.ok("Delete successfully!");
     }
 }

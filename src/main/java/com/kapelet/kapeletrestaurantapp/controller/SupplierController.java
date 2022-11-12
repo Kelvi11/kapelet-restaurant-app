@@ -21,24 +21,24 @@ public class SupplierController {
     }
 
     @PostMapping
-    public Supplier persist(@RequestBody Supplier supplier) {
-        return supplierService.persist(supplier);
+    public ResponseEntity<Supplier> persist(@RequestBody Supplier supplier) {
+        return ResponseEntity.ok(supplierService.persist(supplier));
     }
 
     @GetMapping("/{id}")
-    public Supplier getById(@PathVariable int id) {
-        return supplierService.getById(id);
+    public ResponseEntity<Supplier> getById(@PathVariable int id) {
+        return ResponseEntity.ok(supplierService.getById(id));
     }
 
     @PutMapping("/{id}")
-    public Supplier update(@PathVariable int id, @RequestBody Supplier supplier) {
-        return supplierService.update(id, supplier);
+    public ResponseEntity<Supplier> update(@PathVariable int id, @RequestBody Supplier supplier) {
+        return ResponseEntity.ok(supplierService.update(id, supplier));
     }
 
     @DeleteMapping("/{id}")
-    public String delete(@PathVariable("id") int id) {
+    public ResponseEntity<String> delete(@PathVariable("id") int id) {
         supplierService.deleteById(id);
-        return "Delete successfully!";
+        return ResponseEntity.ok("Delete successfully!");
 
     }
 

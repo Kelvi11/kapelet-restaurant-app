@@ -21,23 +21,23 @@ public class ProductController {
     }
 
     @PostMapping
-    public Product persist(@RequestBody Product product) {
-        return productService.persist(product);
+    public ResponseEntity<Product> persist(@RequestBody Product product) {
+        return ResponseEntity.ok(productService.persist(product));
     }
 
     @GetMapping("/{id}")
-    public Product getById(@PathVariable Integer id) {
-        return productService.getById(id);
+    public ResponseEntity<Product> getById(@PathVariable Integer id) {
+        return ResponseEntity.ok(productService.getById(id));
     }
 
     @PutMapping("/{id}")
-    public Product update(@PathVariable Integer id, @RequestBody Product product) {
-        return productService.update(id, product);
+    public ResponseEntity<Product> update(@PathVariable Integer id, @RequestBody Product product) {
+        return ResponseEntity.ok(productService.update(id, product));
     }
 
     @DeleteMapping("/{id}")
-    public String deleteById(@PathVariable("id") Integer id) {
+    public ResponseEntity<String> deleteById(@PathVariable("id") Integer id) {
         productService.deleteById(id);
-        return "U fshi me suksess!";
+        return ResponseEntity.ok("U fshi me suksess!");
     }
 }

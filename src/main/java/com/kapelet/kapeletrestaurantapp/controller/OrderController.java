@@ -21,23 +21,23 @@ public class OrderController {
     }
 
     @PostMapping
-    public Order persist(@RequestBody Order order) {
-        return orderService.persist(order);
+    public ResponseEntity<Order> persist(@RequestBody Order order) {
+        return ResponseEntity.ok(orderService.persist(order));
     }
 
     @GetMapping("/{id}")
-    public Order getById(@PathVariable Integer id) {
-        return orderService.getById(id);
+    public ResponseEntity<Order> getById(@PathVariable Integer id) {
+        return ResponseEntity.ok(orderService.getById(id));
     }
 
     @PutMapping("/{id}")
-    public Order update(@PathVariable Integer id, @RequestBody Order order) {
-        return orderService.update(id, order);
+    public ResponseEntity<Order> update(@PathVariable Integer id, @RequestBody Order order) {
+        return ResponseEntity.ok(orderService.update(id, order));
     }
 
     @DeleteMapping("/{id}")
-    public String delete(@PathVariable("id") Integer id) {
+    public  ResponseEntity<String> delete(@PathVariable("id") Integer id) {
         orderService.deleteById(id);
-        return "Delete successfully";
+        return ResponseEntity.ok("Delete successfully");
     }
 }
