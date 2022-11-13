@@ -38,6 +38,6 @@ public class ProductController {
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteById(@PathVariable("id") Integer id) {
         productService.deleteById(id);
-        return ResponseEntity.ok("U fshi me suksess!");
+        return ResponseEntity.noContent().build();
     }
 }

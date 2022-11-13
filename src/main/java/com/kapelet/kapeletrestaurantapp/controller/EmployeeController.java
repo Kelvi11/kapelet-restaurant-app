@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 
 @RestController
 @RequestMapping("/employees")
@@ -39,6 +37,6 @@ public class EmployeeController {
     @DeleteMapping("/{id}")
     public ResponseEntity<String> delete(@PathVariable("id") int id) {
         employeeService.deleteById(id);
-        return ResponseEntity.ok("Delete successfully!");
+        return ResponseEntity.noContent().build();
     }
 }

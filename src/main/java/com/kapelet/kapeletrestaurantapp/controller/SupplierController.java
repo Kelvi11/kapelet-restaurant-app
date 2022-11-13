@@ -38,7 +38,7 @@ public class SupplierController {
     @DeleteMapping("/{id}")
     public ResponseEntity<String> delete(@PathVariable("id") int id) {
         supplierService.deleteById(id);
-        return ResponseEntity.ok("Delete successfully!");
+        return ResponseEntity.noContent().build();
 
     }
 
